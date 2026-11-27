@@ -1,0 +1,324 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.gift-page {
+  min-height: 100vh;
+  padding: 35px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #f1e8d7;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 35%,
+      #254334 0%,
+      #172e24 58%,
+      #101f18 100%
+    );
+}
+
+/* CABECERA */
+
+.gift-header {
+  position: relative;
+
+  width: 85%;
+  max-width: 1150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 45px;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+
+  color: #d7c9ad;
+  font-size: 13px;
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: #e6c78b;
+  }
+}
+
+.subtitle {
+  color: #c5a46d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 6px;
+}
+
+/* CONTENIDO */
+
+.gift-content {
+  width: 85%;
+  max-width: 760px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TÍTULO */
+
+.gift-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.day-label {
+  color: #c5a46d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.gift-heading h1 {
+  margin: 15px 0;
+
+  color: #f1e8d7;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(34px, 5vw, 55px);
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.heading-decoration {
+  color: #c5a46d;
+  font-size: 19px;
+}
+
+/* IMAGEN */
+
+.gift-image-container {
+  position: relative;
+
+  width: 100%;
+  max-height: 540px;
+  aspect-ratio: 16 / 10;
+
+  overflow: hidden;
+
+  background: #20372a;
+
+  box-shadow:
+    0 20px 55px #00000035,
+    0 0 0 1px #c5a46d75;
+}
+
+.gift-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.7s ease;
+
+  &:hover {
+    transform: scale(1.025);
+  }
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    transparent 65%,
+    #101f1860 100%
+  );
+
+  pointer-events: none;
+}
+
+.image-day {
+  position: absolute;
+  right: 25px;
+  bottom: 20px;
+
+  color: #fff0d0;
+
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 42px;
+  font-weight: 400;
+}
+
+/* MENSAJE */
+
+.gift-message {
+  max-width: 570px;
+  margin: 38px auto 30px;
+
+  text-align: center;
+}
+
+.message-label {
+  color: #c5a46d;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+.gift-message p {
+  margin: 18px 0;
+}
+
+.message-decoration {
+  color: #c5a46d;
+  font-size: 20px;
+}
+
+/* BOTÓN */
+
+.return-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 15px 28px;
+
+  border: 1px solid #c5a46d90;
+  border-radius: 40px;
+
+  color: #f1e8d7;
+  font-size: 13px;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+
+  span {
+    color: #d5b879;
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: #c5a46d18;
+    border-color: #e4c47f;
+    transform: translateY(-3px);
+  }
+}
+
+/* PIE */
+
+.gift-footer {
+  margin-top: auto;
+  padding-top: 55px;
+
+  color: #c6c1b2;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 1px;
+
+  span {
+    margin: 0 12px;
+    color: #c5a46d;
+  }
+}
+
+/* MÓVIL */
+
+@media (max-width: 560px) {
+
+  .gift-page {
+    padding-top: 25px;
+  }
+
+  .gift-header {
+    width: 92%;
+    margin-bottom: 55px;
+    justify-content: flex-end;
+  }
+
+  .subtitle {
+    font-size: 8px;
+    letter-spacing: 3px;
+  }
+
+  .back-button {
+    font-size: 11px;
+  }
+
+  .gift-content {
+    width: 92%;
+  }
+
+  .gift-heading {
+    margin-bottom: 25px;
+  }
+
+  .gift-heading h1 {
+    font-size: 34px;
+  }
+
+  .day-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .gift-image-container {
+    aspect-ratio: 4 / 5;
+    max-height: 480px;
+  }
+
+  .image-day {
+    right: 17px;
+    bottom: 15px;
+    font-size: 34px;
+  }
+
+  .gift-message {
+    margin: 30px auto 25px;
+  }
+
+  .gift-message p {
+    font-size: 17px;
+  }
+
+  .gift-footer {
+    padding-top: 45px;
+    font-size: 9px;
+  }
+}
+
+.riddle-container {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+}
+
+.riddle-instruction {
+  margin-bottom: 20px;
+  color: #e6c78b;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+}
+
+.riddle-text {
+  color: #f3eadb;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}

@@ -4,20 +4,14 @@
   <header class="calendar-header">
 
     <a routerLink="/inicio" class="back-button">
-      <span>←</span> Tornar a l'inici
+      ← Tornar a l'inici
     </a>
 
-    <span class="subtitle">✦ CHRISTMAS COLLECTION ✦</span>
+    <span class="subtitle">BON NADAL</span>
 
     <h1>El teu calendari d'Advent</h1>
 
-    <p>
-      24 sorpreses, 24 moments especials.
-      Cada dia amaga una nova il·lusió.
-    </p>
-
     <div class="progress">
-      <span class="progress-icon">✧</span>
       {{ availableGifts }} de 24 regals disponibles
     </div>
 
@@ -35,6 +29,8 @@
           [class.unlocked]="isAvailable(gift.day)"
           [class.locked]="!isAvailable(gift.day)"
           [class.final-gift]="gift.day === 24"
+          [class.image-card]="!!calendarImages[gift.day]"
+          [style.background-image]="getCalendarBackground(gift.day)"
           [disabled]="!isAvailable(gift.day)"
           (click)="openGift(gift.day)"
           [attr.aria-label]="'Regal del dia ' + gift.day"
@@ -44,41 +40,17 @@
             {{ gift.day.toString().padStart(2, '0') }}
           </span>
 
-          @if (isAvailable(gift.day)) {
-            <span class="gift-icon">🎁</span>
-            <span class="card-status">Obre'm</span>
-          } @else {
-            <span class="gift-decoration">
-              @switch (gift.day % 5) {
-                @case (0) { ✦ }
-                @case (1) { ❄ }
-                @case (2) { ✧ }
-                @case (3) { 🎀 }
-                @case (4) { ❋ }
-              }
-            </span>
-            <span class="card-status">Properament</span>
-          }
+          <span class="card-status">
+            @if (isAvailable(gift.day)) {
+              Obre'm
+            } @else {
+              Properament
+            }
+          </span>
 
         </button>
 
       }
-
-      <!-- ESPAI DECORATIU CENTRAL -->
-
-      <div class="mosaic-centerpiece">
-
-        <span class="center-ornament">✦</span>
-
-        <span class="center-title">Bon Nadal</span>
-
-        <span class="center-subtitle">
-          UNA MICA DE MÀGIA
-        </span>
-
-        <span class="center-ornament">✧</span>
-
-      </div>
 
     </div>
 

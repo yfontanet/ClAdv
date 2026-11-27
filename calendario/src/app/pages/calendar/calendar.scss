@@ -8,13 +8,13 @@
   min-height: 100vh;
   padding: 45px 0 35px;
   overflow: hidden;
-  color: #f1e8d7;
 
+  color: #f1e8d7;
   background:
     radial-gradient(
-      ellipse at 50% 40%,
+      ellipse at 50% 35%,
       #254334 0%,
-      #172e24 55%,
+      #172e24 58%,
       #101f18 100%
     );
 }
@@ -27,14 +27,16 @@
   position: relative;
   width: 85%;
   max-width: 1350px;
-  margin: 0 auto 55px;
+  margin: 0 auto 48px;
   text-align: center;
 
   h1 {
-    margin: 16px 0 10px;
+    margin: 16px 0 12px;
+
     color: #f1e8d7;
+
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(36px, 4vw, 58px);
+    font-size: clamp(36px, 4vw, 56px);
     font-weight: 400;
     letter-spacing: -1.5px;
   }
@@ -49,7 +51,7 @@
 
 .subtitle {
   color: #c5a46d;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 6px;
 }
@@ -71,10 +73,7 @@
 }
 
 .progress {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
+  display: inline-block;
   margin-top: 20px;
   padding: 10px 21px;
 
@@ -83,17 +82,16 @@
 
   color: #e4d3b1;
   font-size: 12px;
-  letter-spacing: 0.5px;
-}
-
-.progress-icon {
-  color: #d9b979;
-  font-size: 17px;
+  letter-spacing: 0.4px;
 }
 
 /* =====================================
-   MOSAICO PRINCIPAL
-   ESCRITORIO: 12 COLUMNAS × 8 FILAS
+   MOSAICO DE ESCRITORIO
+   6 COLUMNAS × 6 FILAS
+
+   24 piezas.
+   36 unidades geométricas.
+   Sin huecos ni solapamientos.
    ===================================== */
 
 .mosaic-wrapper {
@@ -104,32 +102,23 @@
 
 .calendar-mosaic {
   width: 85%;
-  max-width: 1350px;
+  max-width: 1250px;
+  aspect-ratio: 1 / 1;
 
   display: grid;
 
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(8, clamp(65px, 7vw, 100px));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 1fr));
 
   gap: 0;
 
   grid-template-areas:
-
-    ". . d1 d1 d1 d1 d2 d2 d2 d2 . ."
-
-    ". d3 d3 d3 d4 d4 d4 d4 d5 d5 d5 ."
-
-    "d6 d6 d6 d7 d7 d7 d7 d8 d5 d5 d5 d9"
-
-    "d6 d6 d6 d10 d11 center center d8 d12 d12 d13 d9"
-
-    "d14 d14 d14 d15 d16 center center d8 d12 d12 d13 d9"
-
-    "d14 d14 d14 d17 d18 d19 d20 d8 d12 d12 d13 d9"
-
-    ". d21 d21 d21 d21 d22 d20 d23 d23 d23 d13 ."
-
-    ". . d24 d24 d24 d24 d20 d23 d23 d23 . .";
+    "d1 d2 d3 d4 d4 d5"
+    "d6 d7 d3 d8 d9 d5"
+    "d6 d10 d11 d8 d9 d12"
+    "d13 d14 d15 d16 d16 d12"
+    "d17 d18 d18 d19 d20 d20"
+    "d17 d21 d22 d19 d23 d24";
 }
 
 /* =====================================
@@ -149,161 +138,159 @@
   align-items: flex-start;
   justify-content: space-between;
 
-  padding: clamp(9px, 1.3vw, 19px);
+  padding: clamp(12px, 1.6vw, 24px);
 
   border: 0;
   border-radius: 0;
 
-  /*
-    Sombra interior: mantiene las piezas
-    pegadas sin crear espacios entre ellas.
-  */
   box-shadow:
-    inset 0 0 0 0.7px #d9bd8b90,
-    inset 0 0 25px #00000012;
+    inset 0 0 0 0.6px #d6bd8b90;
 
   overflow: hidden;
+
   color: #f1e8d7;
+  text-align: left;
   cursor: pointer;
 
   transition:
-    filter 0.3s ease,
-    box-shadow 0.3s ease,
-    z-index 0.3s ease;
+    filter 0.25s ease,
+    box-shadow 0.25s ease;
 
   .day-number {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(20px, 2.3vw, 34px);
+    font-size: clamp(22px, 2.5vw, 36px);
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
   }
 
-  .gift-icon,
-  .gift-decoration {
-    position: relative;
-    z-index: 2;
-    align-self: flex-end;
-    font-size: clamp(18px, 2.2vw, 30px);
+  .card-symbol {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+
+    transform: translateY(-50%);
+
+    color: #e5cc98;
+    font-family: Georgia, serif;
+    font-size: clamp(20px, 2.5vw, 34px);
+    opacity: 0.55;
   }
 
   .card-status {
     position: relative;
-    z-index: 2;
+    z-index: 1;
 
     font-size: 9px;
-    letter-spacing: 1.3px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+
     opacity: 0.8;
   }
 
   &:disabled {
     cursor: default;
   }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 6px;
-
-    border: 1px solid #ffffff13;
-
-    pointer-events: none;
-  }
 }
 
 /* =====================================
-   ACABADOS Y TEXTURAS
+   PALETA DE COLORES
    ===================================== */
 
-.gift-card:nth-child(4n + 1) {
-  background:
-    radial-gradient(circle at 85% 20%, #ffffff12, transparent 40%),
-    linear-gradient(145deg, #85444a, #612832);
+
+/* =====================================
+   PALETA PREMIUM DISTRIBUIDA
+   ===================================== */
+
+/* BURDEOS */
+
+.gift-card:nth-child(1),
+.gift-card:nth-child(5),
+.gift-card:nth-child(7),
+.gift-card:nth-child(10),
+.gift-card:nth-child(15),
+.gift-card:nth-child(17),
+.gift-card:nth-child(24) {
+  background: linear-gradient(
+    145deg,
+    #80434a 0%,
+    #652d36 100%
+  );
+
+  color: #f1e8d7;
 }
 
-.gift-card:nth-child(4n + 2) {
-  background:
-    radial-gradient(circle at 80% 15%, #ffffff0c, transparent 45%),
-    linear-gradient(145deg, #285441, #163528);
+/* VERDE */
+
+.gift-card:nth-child(2),
+.gift-card:nth-child(6),
+.gift-card:nth-child(9),
+.gift-card:nth-child(14),
+.gift-card:nth-child(19),
+.gift-card:nth-child(21) {
+  background: linear-gradient(
+    145deg,
+    #28503e 0%,
+    #1b392d 100%
+  );
+
+  color: #f1e8d7;
 }
 
-.gift-card:nth-child(4n + 3) {
-  background:
-    radial-gradient(circle at 80% 20%, #ffffff25, transparent 45%),
-    linear-gradient(145deg, #d0b17a, #a88955);
+/* DORADO */
+
+.gift-card:nth-child(3),
+.gift-card:nth-child(12),
+.gift-card:nth-child(13),
+.gift-card:nth-child(18),
+.gift-card:nth-child(23) {
+  background: linear-gradient(
+    145deg,
+    #c4a675 0%,
+    #aa8956 100%
+  );
 
   color: #29372d;
 }
 
-.gift-card:nth-child(4n) {
-  background:
-    radial-gradient(circle at 80% 20%, #ffffff0c, transparent 45%),
-    linear-gradient(145deg, #34473d, #202f28);
-}
+/* VERDE GRISÁCEO */
 
-/* Algunos compartimentos tendrán un acabado diferente */
+.gift-card:nth-child(4),
+.gift-card:nth-child(8),
+.gift-card:nth-child(11),
+.gift-card:nth-child(16),
+.gift-card:nth-child(20),
+.gift-card:nth-child(22) {
+  background: linear-gradient(
+    145deg,
+    #3c4b40 0%,
+    #27372e 100%
+  );
 
-.gift-card:nth-child(5n + 1)::before {
-  content: '✦';
-
-  position: absolute;
-  top: 32%;
-  right: 16%;
-
-  color: #f0d7a2;
-  font-size: clamp(25px, 3vw, 43px);
-  opacity: 0.28;
-}
-
-.gift-card:nth-child(7n + 2)::before {
-  content: '';
-
-  position: absolute;
-  right: -15%;
-  bottom: -30%;
-
-  width: 65%;
-  aspect-ratio: 1;
-
-  border: 1px solid #e8d5ae45;
-  border-radius: 50%;
-}
-
-.gift-card:nth-child(4n + 3) .day-number,
-.gift-card:nth-child(4n + 3) .card-status {
-  color: #29372d;
+  color: #f1e8d7;
 }
 
 /* =====================================
-   VENTANAS BLOQUEADAS
+   DISPONIBLES Y BLOQUEADAS
    ===================================== */
 
 .gift-card.locked {
-  filter: saturate(0.82) brightness(0.94);
+  filter: saturate(0.82) brightness(0.96);
 }
 
-/* =====================================
-   VENTANAS DISPONIBLES
-   ===================================== */
-
 .gift-card.unlocked {
-  z-index: 2;
-
   &:hover {
-    z-index: 5;
+    position: relative;
+    z-index: 2;
 
-    filter: brightness(1.17);
+    filter: brightness(1.13);
 
     box-shadow:
-      inset 0 0 0 1px #e9cb8d,
-      inset 0 0 35px #f4d99a30;
-  }
-
-  &:active {
-    filter: brightness(1.25);
+      inset 0 0 0 1px #e6c98f,
+      inset 0 0 35px #f4d99a25;
   }
 }
 
@@ -312,95 +299,18 @@
    ===================================== */
 
 .gift-card.final-gift {
-  background:
-    radial-gradient(circle at 80% 30%, #ffffff20, transparent 45%),
-    linear-gradient(145deg, #a34f50, #64272e);
+  background: linear-gradient(
+    145deg,
+    #985052 0%,
+    #682c34 100%
+  );
 
-  box-shadow: inset 0 0 0 1px #e7c77f;
+  box-shadow:
+    inset 0 0 0 1px #e4c47f;
 
   .day-number {
     color: #fff0d0;
   }
-
-  &::after {
-    border-color: #e7c77f70;
-  }
-}
-
-/* =====================================
-   ESPACIO CENTRAL DECORATIVO
-   ===================================== */
-
-.mosaic-centerpiece {
-  grid-area: center;
-
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  overflow: hidden;
-
-  background:
-    radial-gradient(circle at center, #294a38 0%, #1a3025 75%);
-
-  box-shadow:
-    inset 0 0 0 1px #c5a46d90,
-    inset 0 0 30px #00000035;
-
-  color: #e9d8b7;
-  text-align: center;
-
-  &::before {
-    content: '';
-
-    position: absolute;
-    inset: 9px;
-
-    border: 1px solid #c5a46d55;
-    pointer-events: none;
-  }
-
-  &::after {
-    content: '';
-
-    position: absolute;
-    width: 75%;
-    aspect-ratio: 1;
-
-    border: 1px solid #c5a46d20;
-    border-radius: 50%;
-    pointer-events: none;
-  }
-}
-
-.center-title {
-  position: relative;
-  z-index: 1;
-
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(18px, 2vw, 29px);
-  font-style: italic;
-}
-
-.center-subtitle {
-  position: relative;
-  z-index: 1;
-
-  color: #c5a46d;
-  font-size: 7px;
-  letter-spacing: 2px;
-}
-
-.center-ornament {
-  position: relative;
-  z-index: 1;
-
-  color: #d7b979;
-  font-size: 17px;
 }
 
 /* =====================================
@@ -408,11 +318,11 @@
    ===================================== */
 
 .calendar-footer {
-  margin-top: 45px;
+  margin-top: 38px;
 
   color: #c6c1b2;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 1px;
 
   span {
@@ -423,61 +333,37 @@
 
 /* =====================================
    TABLET
-   8 COLUMNAS × 10 FILAS
+   MISMA COMPOSICIÓN GEOMÉTRICA
    ===================================== */
 
 @media (max-width: 900px) {
 
   .calendar-header {
     width: 92%;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
   }
 
   .calendar-mosaic {
     width: 92%;
-
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    grid-template-rows: repeat(10, clamp(48px, 8vw, 76px));
-
-    grid-template-areas:
-
-      ". d1 d1 d1 d1 d1 d2 ."
-
-      ". d1 d1 d1 d1 d1 d2 ."
-
-      "d3 d3 d3 d3 d3 d4 d4 d4"
-
-      "d5 d5 d5 d6 d6 d6 d6 d6"
-
-      "d5 d5 d5 center center d7 d8 d9"
-
-      "d5 d5 d5 center center d10 d11 d12"
-
-      "d5 d5 d5 d13 d14 d15 d16 d17"
-
-      "d5 d5 d5 d18 d19 d20 d21 d22"
-
-      ". d23 d23 d23 d23 d23 d24 ."
-
-      ". d23 d23 d23 d23 d23 d24 .";
   }
 
   .gift-card {
-    padding: 11px;
+    padding: 12px;
 
     .day-number {
-      font-size: 22px;
+      font-size: clamp(19px, 3vw, 28px);
     }
-  }
 
-  .center-title {
-    font-size: 21px;
+    .card-status {
+      font-size: 8px;
+      letter-spacing: 1px;
+    }
   }
 }
 
 /* =====================================
    MÓVIL
-   6 COLUMNAS × 14 FILAS
+   4 COLUMNAS × 8 FILAS
    ===================================== */
 
 @media (max-width: 560px) {
@@ -489,7 +375,7 @@
   .calendar-header {
     width: 92%;
     margin-bottom: 30px;
-    padding-top: 48px;
+    padding-top: 45px;
 
     h1 {
       font-size: clamp(29px, 7vw, 38px);
@@ -511,108 +397,101 @@
 
   .calendar-mosaic {
     width: 94%;
+    aspect-ratio: 4 / 8;
 
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    grid-template-rows: repeat(14, clamp(35px, 9vw, 48px));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
 
     grid-template-areas:
-
-      ". d1 d1 d1 d1 ."
-
-      ". d1 d1 d1 d1 ."
-
-      "d2 d1 d1 d1 d1 d3"
-
-      "d2 d1 d1 d1 d1 d3"
-
-      "d2 d1 d1 d1 d1 d3"
-
-      "d2 d4 d4 d4 d4 d3"
-
-      "d2 d5 center center d6 d3"
-
-      "d7 d5 center center d6 d8"
-
-      "d7 d5 d9 d10 d6 d8"
-
-      "d7 d5 d11 d10 d6 d8"
-
-      "d7 d5 d12 d10 d6 d8"
-
-      "d7 d13 d14 d15 d16 d8"
-
-      ". d17 d18 d19 d20 ."
-
-      ". d21 d22 d23 d24 .";
+      "d1 d2 d3 d4"
+      "d1 d5 d6 d7"
+      "d8 d5 d9 d10"
+      "d8 d11 d9 d12"
+      "d13 d14 d15 d16"
+      "d13 d14 d17 d18"
+      "d19 d20 d17 d21"
+      "d19 d22 d23 d24";
   }
 
   .gift-card {
-    padding: 7px;
+    padding: 8px;
 
     .day-number {
-      font-size: clamp(13px, 3.8vw, 19px);
+      font-size: clamp(15px, 4vw, 22px);
     }
 
-    .gift-icon,
-    .gift-decoration {
-      font-size: 15px;
+    .card-symbol {
+      right: 10%;
+      font-size: 18px;
     }
 
     .card-status {
       font-size: 6px;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
     }
-
-    &::after {
-      inset: 3px;
-    }
-  }
-
-  .mosaic-centerpiece {
-    gap: 4px;
-
-    &::before {
-      inset: 4px;
-    }
-  }
-
-  .center-title {
-    font-size: clamp(12px, 3.2vw, 17px);
-  }
-
-  .center-subtitle {
-    font-size: 5px;
-    letter-spacing: 1px;
-  }
-
-  .center-ornament {
-    font-size: 11px;
   }
 
   .calendar-footer {
-    margin-top: 30px;
+    margin-top: 25px;
     font-size: 10px;
   }
 }
 
-/* MÓVILES MUY ESTRECHOS */
+/* =====================================
+   MÓVILES ESTRECHOS
+   ===================================== */
 
 @media (max-width: 360px) {
 
   .calendar-mosaic {
     width: 96%;
-    grid-template-rows: repeat(14, 34px);
   }
 
   .gift-card {
-    padding: 5px;
+    padding: 6px;
 
     .day-number {
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .card-status {
       font-size: 5px;
     }
+  }
+}
+
+
+/* =====================================
+   FOTOGRAFIES DEL MOSAIC
+   ===================================== */
+
+.gift-card.image-card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: #fff3df;
+
+  .day-number {
+    text-shadow: 0 2px 12px #00000065;
+  }
+
+  .card-symbol {
+    color: #f0d39a;
+    text-shadow: 0 2px 12px #00000070;
+  }
+
+  .card-status {
+    color: #fff3df;
+    text-shadow: 0 1px 8px #00000090;
+  }
+
+}
+
+/* Les fotografies mantenen el seu enquadrament en mòbil */
+
+@media (max-width: 560px) {
+  .gift-card.image-card {
+    background-position: center;
   }
 }

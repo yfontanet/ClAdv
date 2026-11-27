@@ -1,1 +1,65 @@
-<p>gift works!</p>
+<main class="gift-page">
+
+  @if (gift; as currentGift) {
+
+    <header class="gift-header">
+
+      <a routerLink="/calendario" class="back-button">
+        ← Tornar al calendari
+      </a>
+
+      <span class="subtitle">
+        BON NADAL
+      </span>
+
+    </header>
+
+    <section class="gift-content">
+
+      <div class="gift-image-container">
+        <img
+          [src]="currentGift.image"
+          [alt]="currentGift.title"
+          class="gift-image"
+        />
+
+        <div class="image-overlay"></div>
+
+        <span class="image-day">
+          {{ currentGift.day.toString().padStart(2, '0') }}
+        </span>
+
+      </div>
+
+      <div class="gift-message">
+        <div class="riddle-container">
+          <p class="riddle-instruction">
+            Resol aquest enigma per aconseguir el teu regal
+          </p>
+          <p class="riddle-text">
+            {{ currentGift.riddle }}
+          </p>
+        </div>
+
+        <div class="message-decoration">
+          ✧
+        </div>
+
+      </div>
+
+      <a routerLink="/calendario" class="return-button">
+        Tornar al calendari
+        <span>→</span>
+      </a>
+
+    </section>
+
+    <footer class="gift-footer">
+      <span>✦</span>
+      Una sorpresa diferent cada dia
+      <span>✦</span>
+    </footer>
+
+  }
+
+</main>
