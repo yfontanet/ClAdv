@@ -49,8 +49,8 @@ export class Advent {
   }
 
    isGiftAvailable(day: number): boolean {
-      const today = new Date();
-
+      //const today = new Date();
+      const today = new Date(2026, 11, 15); // Simulated date for testing purposes
       return today.getMonth() === 11 &&
             today.getDate() >= day;
     }
